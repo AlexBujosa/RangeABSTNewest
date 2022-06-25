@@ -2,6 +2,9 @@
 {
     public class RangeASKata
     {
+        public RangeASKata(string oldStr)
+        {
 
+        }
     }
 }

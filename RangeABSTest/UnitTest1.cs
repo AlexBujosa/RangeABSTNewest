@@ -58,7 +58,7 @@ namespace RangeABSTest
             IntegerRange.Add(10);
             Range r1 = new Range("[2,6)");
             string result = r1.IntegerRangeContain(IntegerRange);
-            Assert.AreEqual("[2,6) doesn’t contain {-1,1,6,10}", result);
+            Assert.AreEqual("[2,6) doesn't contain {-1,1,6,10}", result);
         }
         [TestMethod]
         public void containsRangeTest1()
@@ -66,7 +66,7 @@ namespace RangeABSTest
             
             Range r1 = new Range("[2,5)");
             string result = r1.ContainRange("[7,10)");
-            Assert.AreEqual("[2,5) doesn’t contain [7,10)", result);
+            Assert.AreEqual("[2,5) doesn't contain [7,10)", result);
         }
         [TestMethod]
         public void containsRangeTest2()
@@ -74,7 +74,7 @@ namespace RangeABSTest
 
             Range r1 = new Range("[2,5)");
             string result = r1.ContainRange("[3,10)");
-            Assert.AreEqual("[2,5) doesn’t contain [3,10)", result);
+            Assert.AreEqual("[2,5) doesn't contain [3,10)", result);
         }
         [TestMethod]
         public void containsRangeTest3()
@@ -82,7 +82,7 @@ namespace RangeABSTest
 
             Range r1 = new Range("[3,5)");
             string result = r1.ContainRange("[2,10)");
-            Assert.AreEqual("[3,5) doesn’t contain [2,10)", result);
+            Assert.AreEqual("[3,5) doesn't contain [2,10)", result);
         }
         [TestMethod]
         public void containsRangeTest4()
@@ -90,15 +90,15 @@ namespace RangeABSTest
 
             Range r1 = new Range("[2,10)");
             string result = r1.ContainRange("[3,5]");
-            Assert.AreEqual("[2,10) doesn’t contain [3,5]", result);
+            Assert.AreEqual("[2,10) contains [3,5]", result);
         }
         [TestMethod]
         public void containsRangeTest5()
         {
 
             Range r1 = new Range("[3,5]");
-            string result = r1.ContainRange("[3,5]");
-            Assert.AreEqual("[3,5] doesn’t contain [3,5]", result);
+            string result = r1.ContainRange("[3,5)");
+            Assert.AreEqual("[3,5] contains [3,5)", result);
         }
         [TestMethod]
         public void OverLapsTest1()
@@ -106,48 +106,71 @@ namespace RangeABSTest
 
             Range r1 = new Range("[2,5)");
             string result = r1.OverlapRange("[7,10");
-            Assert.AreEqual("[2,5) doesn’t overlap with [7,10)", result);
-        }
-        [TestMethod]
-        public void OverLapsTest1()
-        {
-
-            Range r1 = new Range("[2,5)");
-            string result = r1.OverlapRange("[7,10");
-            Assert.AreEqual("[2,5) doesn’t overlap with [7,10)", result);
+            Assert.AreEqual("[2,5) doesn't overlap with [7,10)", result);
         }
         [TestMethod]
         public void OverLapsTest2()
         {
 
-            Range r1 = new Range("[2,5)");
-            string result = r1.OverlapRange("[7,10");
-            Assert.AreEqual("[2,5) doesn’t overlap with [7,10)", result);
+            Range r1 = new Range("[2,10)");
+            string result = r1.OverlapRange("[3,5)");
+            Assert.AreEqual("[2,10) overlaps with [3,5)", result);
         }
         [TestMethod]
         public void OverLapsTest3()
         {
 
-            Range r1 = new Range("[2,5)");
-            string result = r1.OverlapRange("[7,10");
-            Assert.AreEqual("[2,5) doesn’t overlap with [7,10)", result);
+            Range r1 = new Range("[3,5)");
+            string result = r1.OverlapRange("[3,5)");
+            Assert.AreEqual("[3,5) overlaps with [3,5)", result);
         }
         [TestMethod]
         public void OverLapsTest4()
         {
 
             Range r1 = new Range("[2,5)");
-            string result = r1.OverlapRange("[7,10");
-            Assert.AreEqual("[2,5) doesn’t overlap with [7,10)", result);
+            string result = r1.OverlapRange("[3,10)");
+            Assert.AreEqual("[2,5) overlaps with [3,10)", result);
         }
         [TestMethod]
         public void OverLapsTest5()
         {
 
-            Range r1 = new Range("[2,5)");
-            string result = r1.OverlapRange("[7,10");
-            Assert.AreEqual("[2,5) doesn’t overlap with [7,10)", result);
+            Range r1 = new Range("[3,5)");
+            string result = r1.OverlapRange("[2,10)");
+            Assert.AreEqual("[3,5) overlaps with [2,10)", result);
         }
+        [TestMethod]
+        public void EqualsTest1()
+        {
 
+            Range r1 = new Range("[3,5)");
+            string result = r1.Equals("[3,5)");
+            Assert.AreEqual("[3,5) equals [3,5)", result);
+        }
+        [TestMethod]
+        public void EqualsTest2()
+        {
+
+            Range r1 = new Range("[2,10)");
+            string result = r1.Equals("[3,5)");
+            Assert.AreEqual("[2,10) neq [3,5)", result);
+        }
+        [TestMethod]
+        public void EqualsTest3()
+        {
+
+            Range r1 = new Range("[2,5)");
+            string result = r1.Equals("[3,10)");
+            Assert.AreEqual("[2,5) neq [3,10)", result);
+        }
+        [TestMethod]
+        public void EqualsTest4()
+        {
+
+            Range r1 = new Range("[3,5)");
+            string result = r1.Equals("[2,10)");
+            Assert.AreEqual("[3,5) neq [2,10)", result);
+        }
     }
 }
