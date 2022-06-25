@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeABST", "RangeABST\RangeABST.csproj", "{66DEA188-DA6F-4BD2-A1CE-9C0D10192ED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeABSTest", "RangeABSTest\RangeABSTest.csproj", "{D8DE6BD2-7791-4044-A831-4966BDEE596E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66DEA188-DA6F-4BD2-A1CE-9C0D10192ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66DEA188-DA6F-4BD2-A1CE-9C0D10192ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66DEA188-DA6F-4BD2-A1CE-9C0D10192ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66DEA188-DA6F-4BD2-A1CE-9C0D10192ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DE6BD2-7791-4044-A831-4966BDEE596E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DE6BD2-7791-4044-A831-4966BDEE596E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DE6BD2-7791-4044-A831-4966BDEE596E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DE6BD2-7791-4044-A831-4966BDEE596E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {839957D4-6D26-4DE6-BFC7-319E67F84BAA}
+	EndGlobalSection
+EndGlobal
