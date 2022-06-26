@@ -87,14 +87,12 @@ namespace RangeABST
             }
             return closeSymbols;
         }
-
         public void invalidRange (string[] strings)
         {
             if(strings.Length !=2)
                 throw new Exception("Su rango no es valido!!");
 
         }
-
         public void isMinorOrEqualThan(int[] range)
         {
             if(range[0] > range[1])
@@ -141,6 +139,22 @@ namespace RangeABST
             }
             return saveRange + " contains ";
 
+        }
+        public string ContainsRange(string otherRange)
+        {
+            otherRange = Regex.Replace(otherRange, " ", "");
+            string newOtherRange = otherRange;
+            CheckSymbolOpCl(otherRange);
+            OpenSymbols newOpen = OpenSymbolsAssign(otherRange);
+            CloseSymbols newClose = CloseSymbolsAssign(otherRange);
+            otherRange = otherRange.Substring(1, otherRange.Length - 2);
+            string[] strings = otherRange.Split(',');
+            int [] newOtherRangeNumber = TryParsingStringArray(strings);
+            invalidRange(strings);
+            isMinorOrEqualThan(newOtherRangeNumber);
+            List<int> containNewNumbers = ContainNumbers(newOtherRangeNumber, newOpen, newClose);
+            string saveContainsRange = IntegerRangeContain(containNewNumbers);
+            return saveContainsRange + newOtherRange;
         }
         public List<int> ContainNumbers(int[] range,OpenSymbols op , CloseSymbols cl)
         {
