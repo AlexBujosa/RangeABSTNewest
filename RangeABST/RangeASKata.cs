@@ -164,5 +164,15 @@ namespace RangeABST
             return (firstDigit, secondDigit);
 
         }
+        public string GetAllPoints()
+        {
+            List<int> Points = ContainNumbers(newRangeNumber, open, close);
+      
+            string allpoints = NumberContaining(Points);
+
+            return saveRange + " allPoints = " + allpoints;
+
+
+        }
     }
 }
