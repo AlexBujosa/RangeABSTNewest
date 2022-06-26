@@ -46,7 +46,7 @@ namespace RangeABSTest
             IntegerRange.Add(4);
             RangeABST.Range r1 = new RangeABST.Range("[2,6)");
             string result = r1.IntegerRangeContain(IntegerRange);
-            Assert.AreEqual("[2,6) contains {2,4}", result);
+            Assert.AreEqual("[2,6) contains {2,4}", result + r1.NumberContaining(IntegerRange));
         }
         [TestMethod]
         public void integerRangeContainTest2()
@@ -58,14 +58,14 @@ namespace RangeABSTest
             IntegerRange.Add(10);
             RangeABST.Range r1 = new RangeABST.Range("[2,6)");
             string result = r1.IntegerRangeContain(IntegerRange);
-            Assert.AreEqual("[2,6) doesn't contain {-1,1,6,10}", result);
+            Assert.AreEqual("[2,6) doesn't contain {-1,1,6,10}", result + r1.NumberContaining(IntegerRange));
         }
         [TestMethod]
         public void containsRangeTest1()
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[2,5)");
-            string result = r1.ContainRange("[7,10)");
+            string result = r1.ContainsRange("[7,10)");
             Assert.AreEqual("[2,5) doesn't contain [7,10)", result);
         }
         [TestMethod]
@@ -73,7 +73,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[2,5)");
-            string result = r1.ContainRange("[3,10)");
+            string result = r1.ContainsRange("[3,10)");
             Assert.AreEqual("[2,5) doesn't contain [3,10)", result);
         }
         [TestMethod]
@@ -81,7 +81,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[3,5)");
-            string result = r1.ContainRange("[2,10)");
+            string result = r1.ContainsRange("[2,10)");
             Assert.AreEqual("[3,5) doesn't contain [2,10)", result);
         }
         [TestMethod]
@@ -89,7 +89,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[2,10)");
-            string result = r1.ContainRange("[3,5]");
+            string result = r1.ContainsRange("[3,5]");
             Assert.AreEqual("[2,10) contains [3,5]", result);
         }
         [TestMethod]
@@ -97,7 +97,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[3,5]");
-            string result = r1.ContainRange("[3,5)");
+            string result = r1.ContainsRange("[3,5)");
             Assert.AreEqual("[3,5] contains [3,5)", result);
         }
         [TestMethod]
@@ -105,7 +105,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[2,5)");
-            string result = r1.OverlapRange("[7,10");
+            string result = r1.OverlapsRange("[7,10)");
             Assert.AreEqual("[2,5) doesn't overlap with [7,10)", result);
         }
         [TestMethod]
@@ -113,7 +113,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[2,10)");
-            string result = r1.OverlapRange("[3,5)");
+            string result = r1.OverlapsRange("[3,5)");
             Assert.AreEqual("[2,10) overlaps with [3,5)", result);
         }
         [TestMethod]
@@ -121,7 +121,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[3,5)");
-            string result = r1.OverlapRange("[3,5)");
+            string result = r1.OverlapsRange("[3,5)");
             Assert.AreEqual("[3,5) overlaps with [3,5)", result);
         }
         [TestMethod]
@@ -129,7 +129,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[2,5)");
-            string result = r1.OverlapRange("[3,10)");
+            string result = r1.OverlapsRange("[3,10)");
             Assert.AreEqual("[2,5) overlaps with [3,10)", result);
         }
         [TestMethod]
@@ -137,7 +137,7 @@ namespace RangeABSTest
         {
 
             RangeABST.Range r1 = new RangeABST.Range("[3,5)");
-            string result = r1.OverlapRange("[2,10)");
+            string result = r1.OverlapsRange("[2,10)");
             Assert.AreEqual("[3,5) overlaps with [2,10)", result);
         }
         [TestMethod]

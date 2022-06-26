@@ -49,7 +49,8 @@ namespace RangeABST
             if(OpenSymbols.OpenParenthesis == open)
             {
                 firstValue += 1;
-            }else if(CloseSymbols.CloseParenthesis == close)
+            }
+            if(CloseSymbols.CloseParenthesis == close)
             {
                 secondValue -= 1;
             }
@@ -57,7 +58,7 @@ namespace RangeABST
         }
         public void CheckSymbolOpCl(string strings)
         {
-            if (strings[0] != '[' && strings[1] != '(')
+            if (strings[0] != '[' && strings[0] != '(')
                 throw new Exception("No contiene los simbolos de entrada correctos");
             if (strings[strings.Length -1] != ']' && strings[strings.Length - 1] != ')')
                 throw new Exception("No contiene los simbolos de cerrada correctos");
@@ -116,11 +117,11 @@ namespace RangeABST
         public string NumberContaining(List<int> numbersContaining)
         {
             string valueString = "{";
-            for(int i = 0; i<numbersContaining.Count - 2; i++)
+            for(int i = 0; i<numbersContaining.Count - 1; i++)
             {
-                valueString = numbersContaining[i].ToString() + ",";
+                valueString += numbersContaining[i].ToString() + ",";
             }
-            valueString = numbersContaining[numbersContaining.Count - 1].ToString() + "}";
+            valueString += numbersContaining[numbersContaining.Count - 1].ToString() + "}";
             return valueString;
 
         }
@@ -195,23 +196,23 @@ namespace RangeABST
             
             return saveRange + " neq " + otherStr;
         }
-        public string AtLeastOneCollision(List<int> value)
+        public string AtLeastOneCollision(List<int> values)
         {
             if (values.Count == 0)
                 throw new Exception("No ingreso elementos, el conjunto esta vacio!!");
             List<int> range = ContainNumbers(newRangeNumber, open, close);
-            for (int i = 0; i < value.Lenght; i++)
+            for (int i = 0; i < values.Count; i++)
             {
-                bool valid = range.Contains(value[i]);
+                bool valid = range.Contains(values[i]);
                 if (valid)
                 {
                     return saveRange + " overlaps with "; 
                 }
 
             }
-            return saveRange + " doesn’t overlap with ";
+            return saveRange + " doesn't overlap with ";
         }
-        public string overlapsRange(string otherRange)
+        public string OverlapsRange(string otherRange)
         {
             otherRange = Regex.Replace(otherRange, " ", "");
             string newOtherRange = otherRange;
