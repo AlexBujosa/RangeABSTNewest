@@ -33,7 +33,11 @@ namespace RangeABST
             open = OpenSymbolsAssign(newRange);
             close = CloseSymbolsAssign(newRange);
             newRange = newRange.Substring(1, newRange.Length - 2);
-            string[] rangeArrayStr = newRange.Split(',');
+            string[] strings = newRange.Split(',');
+            newRangeNumber = TryParsingStringArray(strings);
+            invalidRange(strings);
+            isMinorOrEqualThan(newRangeNumber);
+
 
         }
 
@@ -68,6 +72,33 @@ namespace RangeABST
                 closeSymbols = CloseSymbols.CloseParenthesis;
             }
             return closeSymbols;
+        }
+
+        public void invalidRange (string[] strings)
+        {
+            if(string.Length !=2)
+                throw new Exception("Su rango no es valido!!");
+
+        }
+
+        public void isMinorOrEqualThan(int[] range)
+        {
+            if(range[0] > range[1])
+                throw new Exception("El primer numero debe ser menor o igual al segundo");
+
+        }
+        public void TryParsingStringArray(string[] strings)
+        {
+            int[] creatingRange = new int[2];
+            bool valido;
+            for(int i =0; i < strings.Length; i++)
+            {
+                valido = Int32.Parse(strings[i], out int result);
+                if (valido)
+                    creatingRange[i] = result;
+                else
+                    throw new Exception("Su rango es invalido contiene valores tipo caracter");
+            }
         }
     }
 }
