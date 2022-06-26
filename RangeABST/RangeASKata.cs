@@ -1,4 +1,6 @@
-﻿namespace RangeABST
+﻿using System.Text.RegularExpressions;
+
+namespace RangeABST
 {
     public class RangeASKata
     {
@@ -25,11 +27,13 @@
         public RangeASKata(string oldRange)
         {
 
-            newRange = Regex.Replace(olldRange, " ", "");
+            newRange = Regex.Replace(oldRange, " ", "");
             saveRange = newRange;
             CheckSymbolOpCl(newRange);
             open = OpenSymbolsAssign(newRange);
             close = CloseSymbolsAssign(newRange);
+            newRange = newRange.Substring(1, newRange.Length - 2);
+            string[] rangeArrayStr = newRange.Split(',');
 
         }
 
@@ -39,6 +43,31 @@
                 throw new Exception("No contiene los simbolos de entrada correctos");
             if (strings[strings.Length -1] != ']' && strings[strings.Length - 1] != ')')
                 throw new Exception("No contiene los simbolos de cerrada correctos");
+        }
+        public OpenSymbols OpenSymbolsAssign(string strings)
+        {
+            OpenSymbols openSymbols = OpenSymbols.None;
+            if (strings[0] == '[')
+            {
+                openSymbols = OpenSymbols.OpenSquareBraket;
+            }else if (strings[0] == '(')
+            {
+                openSymbols = OpenSymbols.OpenParenthesis;
+            }
+            return openSymbols;
+        }
+        public CloseSymbols CloseSymbolsAssign(string strings)
+        {
+            CloseSymbols closeSymbols = CloseSymbols.None;
+            if (strings[strings.Length - 1] == ']')
+            {
+                closeSymbols = CloseSymbols.CloseSquareBraket;
+            }
+            else if (strings[strings.Length - 1] == ')')
+            {
+                closeSymbols = CloseSymbols.CloseParenthesis;
+            }
+            return closeSymbols;
         }
     }
 }
