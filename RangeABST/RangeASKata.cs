@@ -115,5 +115,29 @@ namespace RangeABST
             }
             return creatingRange;
         }
+        public string IntegerRangeContain(List<int> values)
+        {
+            if(values.Count == 0)
+                throw new Exception("No ingreso elementos, el conjunto esta vacio!!");
+            List<int> range = ContainNumbers(newRangeNumber, open, close);
+
+        }
+        public List<int> ContainNumbers(int[] range,OpenSymbols op , CloseSymbols cl)
+        {
+            List<int> newRange = new List<int>();
+            (int firstDigit, int secondDigit) =
+                ReturnFirstSecondDigit(range, op, cl);
+        }
+        public (int,int) ReturnFirstSecondDigit(int[] range, OpenSymbols op, CloseSymbols cl)
+        {
+            int firstDigit = range[0];
+            int secondDigit = range[1];
+            if (OpenSymbols.OpenParenthesis = op)
+                firstDigit += 1;
+            if (CloseSymbols.CLoseParenthesis = cl)
+                secondDigit -= 1;
+            return (firstDigit, secondDigit);
+
+        }
     }
 }
