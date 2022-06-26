@@ -2,7 +2,7 @@
 
 namespace RangeABST
 {
-    public class RangeASKata
+    public class Range
     {
         public enum OpenSymbols
         {
@@ -24,7 +24,7 @@ namespace RangeABST
         public OpenSymbols open;
         public CloseSymbols close;
 
-        public RangeASKata(string oldRange)
+        public Range(string oldRange)
         {
 
             newRange = Regex.Replace(oldRange, " ", "");
@@ -40,7 +40,21 @@ namespace RangeABST
 
 
         }
-
+        public string endPoints()
+        {
+            int firstValue = newRangeNumber[0];
+            int secondValue = newRangeNumber[1];
+            string openKey = "{";
+            string closeKey = "}";
+            if(OpenSymbols.OpenParenthesis == open)
+            {
+                firstValue += 1;
+            }else if(CloseSymbols.CloseParenthesis == close)
+            {
+                secondValue -= 1;
+            }
+            return saveRange + $" endPoints = {openKey}{firstValue},{secondValue}{closeKey}";
+        }
         public void CheckSymbolOpCl(string strings)
         {
             if (strings[0] != '[' && strings[1] != '(')
@@ -76,7 +90,7 @@ namespace RangeABST
 
         public void invalidRange (string[] strings)
         {
-            if(string.Length !=2)
+            if(strings.Length !=2)
                 throw new Exception("Su rango no es valido!!");
 
         }
@@ -87,18 +101,19 @@ namespace RangeABST
                 throw new Exception("El primer numero debe ser menor o igual al segundo");
 
         }
-        public void TryParsingStringArray(string[] strings)
+        public int[] TryParsingStringArray(string[] strings)
         {
             int[] creatingRange = new int[2];
             bool valido;
             for(int i =0; i < strings.Length; i++)
             {
-                valido = Int32.Parse(strings[i], out int result);
+                valido = Int32.TryParse(strings[i], out int result);
                 if (valido)
                     creatingRange[i] = result;
                 else
                     throw new Exception("Su rango es invalido contiene valores tipo caracter");
             }
+            return creatingRange;
         }
     }
 }
