@@ -188,5 +188,44 @@ namespace RangeABST
 
 
         }
+        public string Equals(string otherStr)
+        {
+            if(otherStr == saveRange)
+              return saveRange + " equals " + otherStr;
+            
+            return saveRange + " neq " + otherStr;
+        }
+        public string AtLeastOneCollision(List<int> value)
+        {
+            if (values.Count == 0)
+                throw new Exception("No ingreso elementos, el conjunto esta vacio!!");
+            List<int> range = ContainNumbers(newRangeNumber, open, close);
+            for (int i = 0; i < value.Lenght; i++)
+            {
+                bool valid = range.Contains(value[i]);
+                if (valid)
+                {
+                    return saveRange + " overlaps with "; 
+                }
+
+            }
+            return saveRange + " doesn’t overlap with ";
+        }
+        public string overlapsRange(string otherRange)
+        {
+            otherRange = Regex.Replace(otherRange, " ", "");
+            string newOtherRange = otherRange;
+            CheckSymbolOpCl(otherRange);
+            OpenSymbols newOpen = OpenSymbolsAssign(otherRange);
+            CloseSymbols newClose = CloseSymbolsAssign(otherRange);
+            otherRange = otherRange.Substring(1, otherRange.Length - 2);
+            string[] strings = otherRange.Split(',');
+            int[] newOtherRangeNumber = TryParsingStringArray(strings);
+            invalidRange(strings);
+            isMinorOrEqualThan(newOtherRangeNumber);
+            List<int> containNewNumbers = ContainNumbers(newOtherRangeNumber, newOpen, newClose);
+            string overlaps = AtLeastOneCollision(containNewNumbers);
+            return overlaps + newOtherRange;
+        }
     }
 }
